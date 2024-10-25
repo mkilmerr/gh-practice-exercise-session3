@@ -2,9 +2,8 @@ name: Deployment Workflow
 on: [push, workflow_dispatch]
 
 jobs:
-	steps:
-		lint:
-			runs-on: ubuntu-latest
-		    steps:
-				- name: Running Lint
-				run: npm lint
+	lint:
+		runs-on: ubuntu-latest
+		steps:
+			- name: Running Lint
+			run: npm lint
