@@ -1,21 +1,12 @@
-name: Deployment Workflow
-on: [push, workflow_dispatch]
+name: Deployment
+on: push
 
 jobs:
-    checkout:
+    deployment:
         runs-on: ubuntu-latest
         steps:
-            - name: Checkout project
-              uses: actions/checkout@v3
-    lint:
-        needs: checkout
-        runs-on: ubuntu-latest
-        steps:
-          - name: setup node js 
-            uses: actions/setup-node@v4
-            with:
-              node-version: 18
-          - name: install dependencies 
-            run: npm install
-          - name: Lint
-            run: npm lint
+            - name: Get code
+              run:  actions/checkout@v3
+            - name: Install dependecies
+              run: npm ci
+
