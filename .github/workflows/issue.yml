@@ -2,35 +2,8 @@ name: Issue Workflow
 on: issues
 
 jobs:
-    lint:
+    output:
         runs-on: ubuntu-latest
         steps:
-            - name: Get code 
-              uses: actions/checkout@v3
-            - name: Install dependecies
-              run: npm ci
-            - name: Lint 
-              run: npm run lint
-
-    test:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Get code 
-              uses: actions/checkout@v3
-            - name: Install dependecies
-              run: npm ci
-            - name: Test
-              run: npm run test
-
-    deploy:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Get code 
-              uses: actions/checkout@v3
-            - name: Install dependecies
-              run: npm ci
-            - name: Build 
-              run: npm run build
-            - name: Deploy
-              run: echo "Deploying......"
-
+            - name: Output event
+              run: echo "${{toJson(github.event)}}"
