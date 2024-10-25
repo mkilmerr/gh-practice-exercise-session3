@@ -7,10 +7,9 @@ jobs:
         steps:
             - name: Checkout project
               uses: actions/checkout@v3
-    setup-node:
+    lint:
+        needs: checkout
         runs-on: ubuntu-latest
         steps:
-          - name: Setup node js 
-            uses: actions/setup-node@v4
-          - name: Install dependencies
-            run: npm ci
+          - name: Lint
+            run: npm lint
